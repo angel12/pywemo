@@ -9,12 +9,11 @@ class Dimmer(Switch):
         """
         Get Brightness From Device
         """
-        if force_update or self._brightness is None:
-            try:
-                brightness = self.basicevent.GetBinaryState().get('brightness')
-            except ValueError:
-                brightness = 0
-            self._brightness = brightness
+        try:
+            brightness = self.basicevent.GetBinaryState().get('brightness')
+        except ValueError:
+            brightness = 0
+        self._brightness = brightness
 
         return self._brightness
 
